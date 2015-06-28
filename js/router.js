@@ -12,7 +12,7 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
     return new Router({
         routes: [
             { url: '',          params: { page: 'home-page' } },
-            { url: 'home',          params: { page: 'home-page' } },
+            { url: 'home',      params: { page: 'home-page' } },
             { url: 'about',     params: { page: 'about-page' } }
         ]
     });
@@ -27,12 +27,12 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
             });
         });
 
-        crossroads.bypassed.add(function (a) {
-            console.log("bypassed " + a);
+        crossroads.bypassed.add(function (url) {
+            console.log("bypassed " + url);
             currentRoute(
                 {
                     page: 'not-found-page',
-                    realUrl: a
+                    realUrl: url
                 });
         });
 
