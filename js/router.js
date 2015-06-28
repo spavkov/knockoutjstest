@@ -27,11 +27,21 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
             });
         });
 
+        crossroads.bypassed.add(function (a) {
+            console.log("bypassed " + a);
+            currentRoute(
+                {
+                    page: 'not-found-page',
+                    realUrl: a
+                });
+        });
+
         activateCrossroads();
     }
 
     function activateCrossroads() {
         crossroads.routed.add(console.log, console);
+
         function parseHash(newHash, oldHash) {
             crossroads.parse(newHash);
         }
